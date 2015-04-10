@@ -1,0 +1,22 @@
+temp <- tempfile()
+download.file("http://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip",temp)
+data <- read.table(unz(temp, "household_power_consumption.txt"), header=TRUE, sep=";")
+unlink(temp)
+
+data$Date <- as.Date(data$Date, format = '%d/%m/%Y')
+data <- subset(data, data$Date == "2007-02-01" | data$Date == "2007-02-02")
+data$Time <- strptime(data$Time, format = "%T")
+#data[,-(1:2)] <- as.numeric(data[,-(1:2)])
+data[,3] <- as.numeric(data[,3])
+data[,4] <- as.numeric(data[,4])
+data[,5] <- as.numeric(data[,5])
+data[,6] <- as.numeric(data[,6])
+data[,7] <- as.numeric(data[,7])
+data[,8] <- as.numeric(data[,8])
+data[,9] <- as.numeric(data[,9])
+
+hist(data$Global_active_power,col = "red")
+
+png("plot1.png")
+hist(data$Global_active_power,col = "red", main = "Global Active Power")
+dev.off()
