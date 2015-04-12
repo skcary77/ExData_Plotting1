@@ -22,9 +22,12 @@ data[,7] <- as.numeric(data[,7])
 data[,8] <- as.numeric(data[,8])
 data[,9] <- as.numeric(data[,9])
 
+#create the plot
 png("plot3.png")
-with(data, plot(Time, Sub_metering_1,type = "l",xlab = "",ylab = "Energy sub metering"))
+with(data, plot(Time, Sub_metering_1,type = "l",
+                xlab = "",ylab = "Energy sub metering"))
 with(data, lines(Time,Sub_metering_2,col = "red"))
 with(data, lines(Time,Sub_metering_3,col = "blue"))
-legend("topright", col=c("black","red","blue"), lty=1,legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+legend("topright", col=c("black","red","blue"),
+       lty=1,legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
 dev.off()

@@ -27,5 +27,3 @@ png("plot1.png")
 hist(data$Global_active_power,col = "red",main = "Global Active Power",xlab = "Global active power (kilowatts)")
 dev.off()
 
-data$newT <- strptime(paste(data$Date,data$Time, sep = " "), format = "%Y-%m-%d %H:%M:%S")
-with(data, plot(newT, Global_active_power,type = "l"))

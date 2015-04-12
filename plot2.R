@@ -22,6 +22,8 @@ data[,7] <- as.numeric(data[,7])
 data[,8] <- as.numeric(data[,8])
 data[,9] <- as.numeric(data[,9])
 
+#create the plot
 png("plot2.png")
-with(data, plot(Time, Global_active_power,type = "l",xlab = "",ylab = "Global active power (kilowatts)"))
+with(data, plot(Time, Global_active_power,type = "l",
+                xlab = "",ylab = "Global active power (kilowatts)"))
 dev.off()

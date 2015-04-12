@@ -23,7 +23,7 @@ data[,8] <- as.numeric(data[,8])
 data[,9] <- as.numeric(data[,9])
 
 
-
+#create the plot
 png("plot4.png")
 par(mfrow=c(2,2))
 with(data, plot(Time, Global_active_power,type = "l",xlab = "",ylab = "Global active power (kilowatts)"))
@@ -31,6 +31,7 @@ with(data, plot(Time, Voltage,type = "l",xlab = "datetime",))
 with(data, plot(Time, Sub_metering_1,type = "l",xlab = "",ylab = "Energy sub metering"))
 with(data, lines(Time,Sub_metering_2,col = "red"))
 with(data, lines(Time,Sub_metering_3,col = "blue"))
-legend("topright", col=c("black","red","blue"), lty=1,bty="n",legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+legend("topright", col=c("black","red","blue"), lty=1,bty="n",
+       legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
 with(data, plot(Time, Global_reactive_power,type = "l",xlab = "datetime"))
 dev.off()
