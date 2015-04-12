@@ -22,10 +22,9 @@ data[,7] <- as.numeric(data[,7])
 data[,8] <- as.numeric(data[,8])
 data[,9] <- as.numeric(data[,9])
 
-#create the plot
-png("plot1.png")
-hist(data$Global_active_power,col = "red",main = "Global Active Power",xlab = "Global active power (kilowatts)")
+png("plot3.png")
+with(data, plot(Time, Sub_metering_1,type = "l",xlab = "",ylab = "Energy sub metering"))
+with(data, lines(Time,Sub_metering_2,col = "red"))
+with(data, lines(Time,Sub_metering_3,col = "blue"))
+legend("topright", col=c("black","red","blue"), lty=1,legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
 dev.off()
-
-data$newT <- strptime(paste(data$Date,data$Time, sep = " "), format = "%Y-%m-%d %H:%M:%S")
-with(data, plot(newT, Global_active_power,type = "l"))
